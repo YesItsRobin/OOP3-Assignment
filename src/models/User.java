@@ -7,6 +7,7 @@ public class User {
     private String password;
     private Contact contact;
     private ArrayList<Contact> contacts;
+    private ArrayList<Message> emailList;
 
     private static User user;
 
@@ -16,6 +17,7 @@ public class User {
         this.contact = new Contact();
         this.contacts = new ArrayList<>();
         contacts.add(new Contact("John", "john@upcmail.nl","key123"));
+        this.emailList = new ArrayList<>();
     }
 
     public static User getInstance(){
@@ -55,5 +57,12 @@ public class User {
 
     public void removeContact(Contact contact){
         this.contacts.remove(contact);
+    }
+
+    public ArrayList<Message> getEmails() {
+        return emailList;
+    }
+    public void addEmail(Message email){
+        this.emailList.add(email);
     }
 }

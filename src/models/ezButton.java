@@ -1,5 +1,7 @@
 package src.models;
 
+import javafx.scene.control.Button;
+
 public class ezButton {
     javafx.scene.control.Button button;
 
@@ -20,4 +22,11 @@ public class ezButton {
         button.setStyle("-fx-background-color: #003800");
     }
 
+    public void smaller(){
+        button.setPrefHeight(50);
+    }
+
+    public Button getButton() {
+        return button;
+    }
 }
