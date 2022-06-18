@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import src.models.ezButton;
 import src.util.FxmlLoader;
+import src.views.View;
 
 import java.io.IOException;
 
@@ -20,11 +21,15 @@ public class menuController {
     private ezButton pButton;
     private ezButton cButton;
     private ezButton eButton;
+    private View eview;
+    private View cview;
+    private View pview;
 
     @FXML
     public void initialize() throws IOException {
         mainPane.setStyle("-fx-background-color: #000000");
         buttons();
+        infoPane.setStyle("-fx-background-color: #60C460");
         infoPane.setCenter(FxmlLoader.getPane("emailPane"));
     }
 

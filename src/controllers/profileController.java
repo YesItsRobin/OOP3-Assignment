@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import src.models.Key;
 import src.models.User;
@@ -33,5 +34,21 @@ public class profileController {
         User.getInstance().setPrivatekey(this.uPrivKey.getText());
         User.getInstance().setPassword(this.uPass.getText());
         initialize();
+    }
+
+    public void hover() {
+        editButton.hover();
+    }
+
+    public void unhover() {
+        editButton.unhover();
+    }
+
+    public void pressed() {
+        editButton.press();
+    }
+
+    public void released() {
+        editButton.hover();
     }
 }
