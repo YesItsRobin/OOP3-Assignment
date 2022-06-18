@@ -1,20 +1,12 @@
 package src.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import src.main.main;
 import src.models.ezButton;
 import src.util.FxmlLoader;
-import src.views.View;
 
 import java.io.IOException;
 
@@ -25,9 +17,6 @@ public class menuController {
     public Button cButton1;
     public Button eButton1;
     public BorderPane infoPane;
-    private Pane eView;
-    private Pane pView;
-    private Pane cView;
     private ezButton pButton;
     private ezButton cButton;
     private ezButton eButton;
@@ -36,8 +25,7 @@ public class menuController {
     public void initialize() throws IOException {
         mainPane.setStyle("-fx-background-color: #000000");
         buttons();
-        views();
-        infoPane.setCenter(eView);
+        infoPane.setCenter(FxmlLoader.getPane("emailPane"));
     }
 
     private void buttons(){
@@ -46,21 +34,16 @@ public class menuController {
         this.eButton = new ezButton(this.eButton1);
     }
 
-    private void views() throws IOException {
-        eView = FxmlLoader.getPane("emailPane");
-        pView = FxmlLoader.getPane("profilePane");
-        cView = FxmlLoader.getPane("contactsPane");
-    }
     public void cButtonPress() {
-        infoPane.setCenter(cView);
+        infoPane.setCenter(FxmlLoader.getPane("contactsPane"));
     }
 
     public void pButtonPress() {
-        infoPane.setCenter(pView);
+        infoPane.setCenter(FxmlLoader.getPane("profilePane"));
     }
 
     public void eButtonPress() {
-        infoPane.setCenter(eView);
+        infoPane.setCenter(FxmlLoader.getPane("emailPane"));
     }
     public void pButtonPress2() {
         pButton.press();

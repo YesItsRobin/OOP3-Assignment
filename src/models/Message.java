@@ -18,22 +18,22 @@ public class Message {
     }
 
     public void send() {
-        setDate(LocalDateTime.now());
+        //setDate(LocalDateTime.now());
         //it is first signed using the private key of the user
-        Key privatekey = User.getInstance().getPrivatekey();
+        //Key privatekey = User.getInstance().getPrivatekey();
 
         //then encrypted using the public key of the receiver
-        Key publickey = receiver.getPublickeyCertificate();
+        //Key publickey = receiver.getPublickeyCertificate();
     }
 
     public void receive() {
         //it is stored on permanent storage (hard disk) in its encrypted form
 
         //When reading it the application first decrypts it using the private key of the user
-        Key privatekey = User.getInstance().getPrivatekey();
+        //Key privatekey = User.getInstance().getPrivatekey();
 
         //then decrypted using the public key of the sender
-        Key publickey = sender.getPublickeyCertificate();
+        //Key publickey = sender.getPublickeyCertificate();
     }
 
     private void encrypt(Key publickey) {

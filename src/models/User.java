@@ -1,14 +1,16 @@
 package src.models;
 
 public class User {
-    private Key privatekey;
+    private String privatekey;  //NEEDS TO BECOME A KEY OBJECT BUT I CAN'T FIGURE OUT HOW TO CREATE ONE
     private String password;
+    private Contact contact;
 
     private static User user;
 
     private User() {
         this.password = null;
         this.privatekey = null;
+        this.contact = new Contact();
     }
 
     public static User getInstance(){
@@ -18,11 +20,11 @@ public class User {
         return user;
     }
 
-    public Key getPrivatekey() {
+    public String getPrivatekey() {
         return privatekey;
     }
 
-    public void setPrivatekey(Key privatekey) {
+    public void setPrivatekey(String privatekey) {
         this.privatekey = privatekey;
     }
 
@@ -32,5 +34,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Contact getContact() {
+        return contact;
     }
 }
