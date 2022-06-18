@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,16 +10,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controllers.newEmailController">
    <children>
-      <MenuButton fx:id="contactMenu" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" text="Choose Contact" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
       <TextField fx:id="titleBox" layoutX="76.0" layoutY="42.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="50.0" />
       <TextArea fx:id="messageBox" layoutX="76.0" layoutY="76.0" prefHeight="254.0" prefWidth="508.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0" />
       <Text fill="WHITE" layoutX="39.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" AnchorPane.leftAnchor="34.4" AnchorPane.rightAnchor="540.0" AnchorPane.topAnchor="50.0" />
       <Text fill="WHITE" layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message:" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="540.0" AnchorPane.topAnchor="80.0" />
       <Button fx:id="sendButton1" layoutX="532.0" layoutY="348.0" mnemonicParsing="false" onAction="#send" onMouseEntered="#hover" onMouseExited="#unhover" onMousePressed="#press" onMouseReleased="#hover" prefHeight="39.0" prefWidth="74.0" text="Send" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <ChoiceBox fx:id="contactMenu" layoutX="69.0" layoutY="14.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

@@ -17,8 +17,9 @@ public class Message {
         this.date = null;
     }
 
+
     public void send() {
-        //setDate(LocalDateTime.now());
+        setDate(LocalDateTime.now());
         //it is first signed using the private key of the user
         //Key privatekey = User.getInstance().getPrivatekey();
 
@@ -58,6 +59,17 @@ public class Message {
         //it is checked using the public key of the sender
         String checked = "";
         setBody(checked);
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "body='" + body + '\'' +
+                ", sender=" + sender +
+                ", receiver=" + receiver +
+                ", title='" + title + '\'' +
+                ", date=" + date +
+                '}';
     }
 
     public void setBody(String body) {
