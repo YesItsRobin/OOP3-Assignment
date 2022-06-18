@@ -13,8 +13,6 @@ public class Key {
         this.password = password;
     }
 
-
-
     public Key getPublickey() {
         return publickey;
     }

@@ -21,6 +21,10 @@ public class Contact {
         this(name, email, publickeyCertificate, null, null, null);
     }
 
+    public Contact(){
+        this(null, null, null, null, null, null);
+    }
+
     public String getName() {
         return name;
     }
