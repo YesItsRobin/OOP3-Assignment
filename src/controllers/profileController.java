@@ -32,7 +32,7 @@ public class profileController {
         this.uPass.setText(User.getInstance().getPassword());
         this.uip.setText(User.getInstance().getContact().getIp());
         this.uSmtp.setText(User.getInstance().getContact().getSmtp());
-        this.uCertPath.setText(User.getInstance().getContact().getPublickeyCertificate());
+        this.uCertPath.setText(User.getInstance().getContact().getPublicKeyCertificate());
         this.uPo.setText(User.getInstance().getContact().getPort());
 
     }
@@ -44,7 +44,7 @@ public class profileController {
         User.getInstance().setPassword(this.uPass.getText());
         User.getInstance().getContact().setIp(this.uip.getText());
         User.getInstance().getContact().setSmtp(this.uSmtp.getText());
-        User.getInstance().getContact().setPublickeyCertificate(this.uCertPath.getText());
+        User.getInstance().getContact().setPublicKeyCertificate(this.uCertPath.getText());
         User.getInstance().getContact().setPort(this.uPo.getText());
         initialize();
     }
