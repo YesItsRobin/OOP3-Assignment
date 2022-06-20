@@ -3,22 +3,22 @@ package src.models;
 public class Contact {
     private String name;
     private String email;
-    private String publickeyCertificate;
+    private String publicKeyCertificate;
     private String ip;
     private String port;
     private String smtp;
 
-    public Contact(String name, String email, String publickeyCertificate, String ip, String port, String smtp) {
+    public Contact(String name, String email, String publicKeyCertificate, String ip, String port, String smtp) {
         this.name = name;
         this.email = email;
-        this.publickeyCertificate = publickeyCertificate;
+        this.publicKeyCertificate = publicKeyCertificate;
         this.ip = ip;
         this.port = port;
         this.smtp = smtp;
     }
 
-    public Contact(String name, String email, String publickeyCertificate) {
-        this(name, email, publickeyCertificate, null, null, null);
+    public Contact(String name, String email, String publicKeyCertificate) {
+        this(name, email, publicKeyCertificate, null, null, null);
     }
 
 
@@ -47,12 +47,12 @@ public class Contact {
         this.email = email;
     }
 
-    public String getPublickeyCertificate() {
-        return publickeyCertificate;
+    public String getPublicKeyCertificate() {
+        return publicKeyCertificate;
     }
 
-    public void setPublickeyCertificate(String publickeyCertificate) {
-        this.publickeyCertificate = publickeyCertificate;
+    public void setPublicKeyCertificate(String publicKeyCertificate) {
+        this.publicKeyCertificate = publicKeyCertificate;
     }
 
     public String getIp() {
