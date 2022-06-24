@@ -39,7 +39,7 @@ public class Message {
 
     private void encrypt(Key publickey) {
         //it is encrypted using the public key of the receiver
-        String encrypted="";
+        String encrypted = "";
         setBody(encrypted);
     }
 
