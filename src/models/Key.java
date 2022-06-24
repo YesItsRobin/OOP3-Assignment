@@ -1,39 +1,43 @@
 package src.models;
 
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.cert.Certificate;
+
 public class Key {
-    private Key publickey;
-    private Key privatekey;
-    private String certificate;
+    private PublicKey publickey;
+    private PrivateKey privatekey;
+    private Certificate certificate;
     private String password;
 
-    public Key(Key publickey, Key privatekey, String certificate, String password) {
+    public Key(PublicKey publickey, PrivateKey privatekey, Certificate certificate, String password) {
         this.publickey = publickey;
         this.privatekey = privatekey;
         this.certificate = certificate;
         this.password = password;
     }
 
-    public Key getPublickey() {
+    public PublicKey getPublickey() {
         return publickey;
     }
 
-    public void setPublickey(Key publickey) {
+    public void setPublickey(PublicKey publickey) {
         this.publickey = publickey;
     }
 
-    public Key getPrivatekey() {
+    public PrivateKey getPrivatekey() {
         return privatekey;
     }
 
-    public void setPrivatekey(Key privatekey) {
+    public void setPrivatekey(PrivateKey privatekey) {
         this.privatekey = privatekey;
     }
 
-    public String getCertificate() {
+    public Certificate getCertificate() {
         return certificate;
     }
 
-    public void setCertificate(String certificate) {
+    public void setCertificate(Certificate certificate) {
         this.certificate = certificate;
     }
 
