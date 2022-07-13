@@ -1,15 +1,13 @@
 package src.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import src.models.Contact;
-import src.models.Message;
+import src.models.BMessage;
 import src.models.User;
 import src.models.ezButton;
 
-import java.util.ArrayList;
+import javax.mail.MessagingException;
 
 public class newEmailController {
     public ChoiceBox<Contact> contactMenu;
@@ -27,10 +25,10 @@ public class newEmailController {
     }
 
 
-    public void send() {
-        Message message = new Message(messageBox.getText(), User.getInstance().getContact(), contactMenu.getValue(), titleBox.getText());
-        message.send();
-        System.out.println(message);
+    public void send() throws MessagingException {
+        BMessage BMessage = new BMessage(messageBox.getText(), User.getInstance().getContact(), contactMenu.getValue(), titleBox.getText());
+        BMessage.send();
+        System.out.println(BMessage);
     }
 
     public void hover() {

@@ -6,15 +6,15 @@ public class Contact {
     private String publicKeyCertificate;
     private String ip;
     private String port;
-    private String smtp;
+    private String host;
 
-    public Contact(String name, String email, String publicKeyCertificate, String ip, String port, String smtp) {
+    public Contact(String name, String email, String publicKeyCertificate, String ip, String port, String host) {
         this.name = name;
         this.email = email;
         this.publicKeyCertificate = publicKeyCertificate;
         this.ip = ip;
         this.port = port;
-        this.smtp = smtp;
+        this.host = host;
     }
 
     public Contact(String name, String email, String publicKeyCertificate) {
@@ -71,11 +71,11 @@ public class Contact {
         this.port = port;
     }
 
-    public String getSmtp() {
-        return smtp;
+    public String getHost() {
+        return host;
     }
 
-    public void setSmtp(String smtp) {
-        this.smtp = smtp;
+    public void setHost(String host) {
+        this.host = host;
     }
 }
