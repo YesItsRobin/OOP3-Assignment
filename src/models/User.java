@@ -7,7 +7,7 @@ public class User {
     private String password;
     private Contact contact;
     private ArrayList<Contact> contacts;
-    private ArrayList<Message> emailList;
+    private ArrayList<BMessage> emailList;
 
     private static User user;
 
@@ -59,10 +59,10 @@ public class User {
         this.contacts.remove(contact);
     }
 
-    public ArrayList<Message> getEmails() {
+    public ArrayList<BMessage> getEmails() {
         return emailList;
     }
-    public void addEmail(Message email){
+    public void addEmail(BMessage email){
         this.emailList.add(email);
     }
 }
