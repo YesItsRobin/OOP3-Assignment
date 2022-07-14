@@ -2,7 +2,7 @@ package src.util;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import src.main.main;
+import src.main.Main;
 
 import java.util.Objects;
 
@@ -11,8 +11,8 @@ public class FxmlLoader {
 
     public static Pane getPane(String filename) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(main.class.getResource("../views/" + filename + ".fxml")));
-            view = (Pane) fxmlLoader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("../views/" + filename + ".fxml")));
+            view = fxmlLoader.load();
         } catch (Exception e) {
             e.printStackTrace();
         }
