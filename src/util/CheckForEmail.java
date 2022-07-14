@@ -32,8 +32,9 @@ public class CheckForEmail extends Thread {
         //infinite loop
         while(true){
             try {
-                Thread.sleep(600000); //10 mins.. I think
+                Thread.sleep(1000); //10 mins.. I think
                 check();
+                System.out.println("Checked for emails");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

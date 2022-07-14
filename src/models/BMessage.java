@@ -1,31 +1,36 @@
 package src.models;
 
+import com.sun.mail.smtp.SMTPMessage;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
+import javax.mail.internet.MimeMessage;
 
 // API doc
 // https://javaee.github.io/javamail/docs/api/
 
 public class BMessage {
+    private Message msg = null;
     private Contact sender;
     private Contact receiver;
-    private Message msg;
     String mailhost;
 
     String prot = "smtp";
     String mailer = "smtpsend";
 
     public BMessage(String text, Contact sender, Contact receiver, String subject) throws MessagingException {
+        this.sender=sender;
+        this.receiver=receiver;
+        this.mailhost=sender.getHost();
+        createmsg();
+
         msg.setFrom(new InternetAddress(sender.getEmail()));
         msg.setText(text);
         msg.setRecipient(javax.mail.Message.RecipientType.TO,new InternetAddress(receiver.getEmail()));
         msg.setSubject(subject);
-        this.sender=sender;
-        this.receiver=receiver;
-        this.mailhost=sender.getHost();
     }
 
     public BMessage(javax.mail.Message message) throws MessagingException, IOException {
@@ -35,6 +40,12 @@ public class BMessage {
         this.mailhost=null;
     }
 
+    private void createmsg() {
+        Properties props = System.getProperties();
+        props.put("mail." + prot + ".host", mailhost);
+        Session session = Session.getDefaultInstance(props, null);
+        msg = new MimeMessage(session);
+    }
 
     public void send() throws MessagingException {
         //it is first signed using the private key of the user
@@ -43,35 +54,6 @@ public class BMessage {
 
         //then encrypted using the public key of the receiver
         //Key publickey = receiver.getPublickeyCertificate();
-
-
-        //Initialize the JavaMail Session.
-        Properties props = System.getProperties();
-        props.put("mail." + prot + ".host", mailhost);
-
-	    /*
-
-
-	    *DON'T THINK THIS IS NEEDED
-
-
-	    *
-	     * Create a Provider representing our extended SMTP transport
-	     * and set the property to use our provider.
-	     *
-	    Provider p = new Provider(Provider.Type.TRANSPORT, prot,
-		"smtpsend$SMTPExtension", "JavaMail demo", "no version");
-	    props.put("mail." + prot + ".class", "smtpsend$SMTPExtension");
-	     */
-
-        // Get a Session object
-        Session session = Session.getInstance(props, null);
-
-	    /*
-	     * Register our extended SMTP transport.
-	     *
-	    session.addProvider(p);
-	     */
 
         //Construct the message and send it.
         getMsg().setHeader("B-Mailer", mailer);
