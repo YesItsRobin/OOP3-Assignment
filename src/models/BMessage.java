@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
 
+import com.sun.mail.smtp.SMTPMessage;
+import javax.mail.internet.MimeMessage;
+
 // API doc
 // https://javaee.github.io/javamail/docs/api/
 
@@ -19,13 +22,25 @@ public class BMessage {
     String mailer = "smtpsend";
 
     public BMessage(String text, Contact sender, Contact receiver, String subject) throws MessagingException {
+        this.sender=sender;
+        this.receiver=receiver;
+        this.mailhost=sender.getHost();
+        createMsg();
+
         msg.setFrom(new InternetAddress(sender.getEmail()));
         msg.setText(text);
         msg.setRecipient(javax.mail.Message.RecipientType.TO,new InternetAddress(receiver.getEmail()));
         msg.setSubject(subject);
-        this.sender=sender;
-        this.receiver=receiver;
-        this.mailhost=sender.getHost();
+
+    }
+
+    private void createMsg() {
+        //Properties props = new Properties();
+        Properties props = System.getProperties();
+        System.out.println("HELLO: " + prot);
+        props.put("mail." + prot + ".host", mailhost );
+        Session session = Session.getDefaultInstance(props, null);
+        this.msg = new MimeMessage(session);
     }
 
     public BMessage(javax.mail.Message message) throws MessagingException, IOException {
