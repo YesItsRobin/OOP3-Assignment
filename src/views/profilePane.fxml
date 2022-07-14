@@ -20,7 +20,7 @@
       <Button fx:id="editButton1" layoutX="312.0" layoutY="324.0" mnemonicParsing="false" onAction="#editButtonPress" onMouseEntered="#hover" onMouseExited="#unhover" onMousePressed="#pressed" onMouseReleased="#released" text="Edit" textFill="WHITE" AnchorPane.leftAnchor="325.0" AnchorPane.topAnchor="360.0" />
       <Text layoutX="45.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ip adress+port" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="240.0" />
       <TextField fx:id="uip" layoutX="226.0" layoutY="209.0" prefHeight="26.0" prefWidth="150.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="240.0" />
-      <Text layoutX="50.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SMTP server" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="280.0" />
+      <Text layoutX="50.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Host server" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="280.0" />
       <TextField fx:id="uSmtp" layoutX="215.0" layoutY="235.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="280.0" />
       <Text layoutX="53.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path to certificate" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="320.0" />
       <TextField fx:id="uCertPath" layoutX="220.0" layoutY="263.0" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="320.0" />

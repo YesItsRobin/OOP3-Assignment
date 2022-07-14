@@ -63,6 +63,8 @@ public class User {
         return emailList;
     }
     public void addEmail(BMessage email){
+        //TO-DO
+        //write to file
         this.emailList.add(email);
     }
 }
