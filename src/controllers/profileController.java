@@ -10,7 +10,6 @@ import src.models.ezButton;
 public class profileController {
     public Button editButton1;
     public TextField uPass;
-    public TextField uPrivKey;
     public TextField Uemail;
     public TextField uName;
     public AnchorPane cPane;
@@ -25,7 +24,6 @@ public class profileController {
         this.editButton = new ezButton(this.editButton1);
         this.uName.setText(User.getInstance().getContact().getName());
         this.Uemail.setText(User.getInstance().getContact().getEmail());
-        this.uPrivKey.setText(User.getInstance().getPrivatekey());
         this.uPass.setText(User.getInstance().getPassword());
         this.uip.setText(User.getInstance().getContact().getIp());
         this.uSmtp.setText(User.getInstance().getContact().getHost());
@@ -37,7 +35,6 @@ public class profileController {
     public void editButtonPress() {
         User.getInstance().getContact().setName(this.uName.getText());
         User.getInstance().getContact().setEmail(this.Uemail.getText());
-        User.getInstance().setPrivatekey(this.uPrivKey.getText());
         User.getInstance().setPassword(this.uPass.getText());
         User.getInstance().getContact().setIp(this.uip.getText());
         User.getInstance().getContact().setHost(this.uSmtp.getText());
