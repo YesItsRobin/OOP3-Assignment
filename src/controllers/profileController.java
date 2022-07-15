@@ -43,7 +43,13 @@ public class profileController {
         User.getInstance().getContact().setHost(this.uSmtp.getText());
         User.getInstance().getContact().setPublicKeyCertificate(this.uCertPath.getText());
         User.getInstance().getContact().setPort(this.uPo.getText());
-        initialize();
+        if (User.getInstance().isComplete()){
+            menuController.newButton.getButton().setDisable(false);
+        }
+        else{
+            menuController.newButton.getButton().setDisable(true);
+        }
+
     }
 
     public void hover() {

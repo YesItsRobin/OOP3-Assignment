@@ -59,35 +59,6 @@ public class BMessage {
         //then encrypted using the public key of the receiver
         //Key publickey = receiver.getPublickeyCertificate();
 
-
-        //Initialize the JavaMail Session.
-        Properties props = System.getProperties();
-        props.put("mail." + prot + ".host", mailhost);
-
-	    /*
-
-
-	    *DON'T THINK THIS IS NEEDED
-
-
-	    *
-	     * Create a Provider representing our extended SMTP transport
-	     * and set the property to use our provider.
-	     *
-	    Provider p = new Provider(Provider.Type.TRANSPORT, prot,
-		"smtpsend$SMTPExtension", "JavaMail demo", "no version");
-	    props.put("mail." + prot + ".class", "smtpsend$SMTPExtension");
-	     */
-
-        // Get a Session object
-        Session session = Session.getInstance(props, null);
-
-	    /*
-	     * Register our extended SMTP transport.
-	     *
-	    session.addProvider(p);
-	     */
-
         //Construct the message and send it.
         getMsg().setHeader("B-Mailer", mailer);
         getMsg().setSentDate(new Date());
@@ -103,6 +74,8 @@ public class BMessage {
 
         //then decrypted using the public key of the sender
         //Key publickey = sender.getPublickeyCertificate();
+
+        //Add to the user's email list
     }
 
     private void encrypt(Key publickey) throws MessagingException {

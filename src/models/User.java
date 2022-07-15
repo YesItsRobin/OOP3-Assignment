@@ -67,4 +67,24 @@ public class User {
         //write to file
         this.emailList.add(email);
     }
+
+    public Boolean isComplete(){
+        if(this.password != null && this.password!=""
+                && this.contact.getName() != null &&this.getContact().getName()!=""
+                && this.contact.getEmail() != null &&this.getContact().getEmail()!=""
+                && ((this.getContact().getPort()!=null &&this.getContact().getPort()!=""
+                && this.getContact().getIp()!=null & this.getContact().getIp()!="" )
+                ||(this.getContact().getHost()!=null &&this.getContact().getHost()!=""))){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasValidIp() {
+        if((this.contact.getIp() != null && this.contact.getIp()!="")&&
+                (this.contact.getPort() != null && this.contact.getPort()!="")){
+            return true;
+        }
+        return false;
+    }
 }
