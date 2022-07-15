@@ -16,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import src.util.CheckForEmail;
 
 import java.security.*;
 import java.security.cert.CertificateException;
@@ -65,12 +66,6 @@ public class Main  extends Application {
         PrivateKey key = (PrivateKey) keyStore.getKey("baeldung", keyPassword);
 
         System.out.println(key);
-
-        //BMAIL
-        User.getInstance().getContact().setEmail("user@email.com");
-        User.getInstance().getContact().setHost("smtp.gmail.com");//smtp.gmail.com,com.sun.mail
-        User.getInstance().addEmail(new BMessage("this is the text thing",User.getInstance().getContact(),new Contact("Bob","Bob@bobberson.com","the key?"),"this is the subject"));
-
 
         // LAUNCH APPLICATION
         launch();

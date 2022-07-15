@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import src.models.User;
 import src.models.ezButton;
 import src.util.FxmlLoader;
 
@@ -19,7 +20,7 @@ public class menuController {
     public Button eButton1;
     public BorderPane infoPane;
     public Button newButton1;
-    private ezButton newButton;
+    public static ezButton newButton;
     private ezButton pButton;
     private ezButton cButton;
     private ezButton eButton;
@@ -30,6 +31,7 @@ public class menuController {
         buttons();
         infoPane.setStyle("-fx-background-color: #60C460");
         infoPane.setCenter(FxmlLoader.getPane("emailPane"));
+        newButton.getButton().setDisable(true);
     }
 
     private void buttons(){

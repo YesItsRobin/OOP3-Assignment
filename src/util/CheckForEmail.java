@@ -8,10 +8,13 @@ import src.models.Contact;
 import src.models.User;
 
 import javax.mail.*;
+import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
 import java.util.Properties;
 
-public class CheckForEmail extends Thread {
+public class CheckForEmail implements Runnable {
 
     private String host;
     private String username;
@@ -29,52 +32,58 @@ public class CheckForEmail extends Thread {
 
 
     public void run(){
+        System.out.println("start check for email");
         //infinite loop
-        while(true){
+        while(host!=null){
             try {
-                //Thread.sleep(600000); //10 mins.. I think
-                Thread.sleep(1000); //10 mins.. I think
                 check();
                 System.out.println("Checked for emails");
-            } catch (InterruptedException e) {
+                Thread.sleep(600000); //10 mins.. I think
+                //Thread.sleep(5000); //5 sec.. I think
+            } catch (InterruptedException | IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
 
-    private void check(){
-        Folder folder = null;
-        Store store = null;
-        try {
-            Properties props = new Properties();
-            props.put("mail.store.protocol", "pop3"); // Google uses POP3S not POP3
-            Session session = Session.getDefaultInstance(props);
-            // session.setDebug(true);
-            store = session.getStore();
-            store.connect(host, username, password);
-            folder = store.getDefaultFolder().getFolder("INBOX");
-            folder.open(Folder.READ_ONLY);
-            Message[] messages = folder.getMessages();
-            for (Message message:messages){
-                User.getInstance().addEmail(new BMessage(message));
-            }
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (folder != null) {
-                try {
-                    folder.close(true);
-                } catch (MessagingException e) {
-                    throw new RuntimeException(e);
+    private void check() throws IOException {
+        if (User.getInstance().hasValidIp()){
+            //email throught sockets?
+        }
+        else {
+            Folder folder = null;
+            Store store = null;
+            try {
+                Properties properties = System.getProperties();
+                Session session = Session.getDefaultInstance(properties);
+                store = session.getStore("pop3");
+                // session.setDebug(true);
+                store = session.getStore();
+                store.connect(host, username, password);
+                folder = store.getDefaultFolder().getFolder("INBOX");
+                folder.open(Folder.READ_ONLY);
+                Message[] messages = folder.getMessages();
+                for (Message message : messages) {
+                    User.getInstance().addEmail(new BMessage(message));
                 }
-            }
-            if (store != null) {
-                try {
-                    store.close();
-                } catch (MessagingException e) {
-                    throw new RuntimeException(e);
+            } catch (MessagingException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } finally {
+                if (folder != null) {
+                    try {
+                        folder.close(true);
+                    } catch (MessagingException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if (store != null) {
+                    try {
+                        store.close();
+                    } catch (MessagingException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }
