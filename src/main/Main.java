@@ -5,20 +5,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import org.bouncycastle.cms.CMSException;
+import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.crypto.util.PublicKeyFactory;
 import src.models.BMessage;
 import src.models.Contact;
 import src.models.User;
 //import src.util.CheckForEmail;
 
+import javax.crypto.NoSuchPaddingException;
 import javax.mail.MessagingException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import src.util.Baeldung;
+import src.util.Crypto;
+import src.util.KeyPairHandler;
 
 import java.security.*;
 import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 //import java.security.cert.CertificateFactory;
 //import java.security.cert.X509Certificate; //not used?
 
@@ -41,36 +49,34 @@ public class Main  extends Application {
             NoSuchProviderException,
             IOException,
             KeyStoreException,
-            UnrecoverableKeyException {
+            UnrecoverableKeyException,
+            InvalidAlgorithmParameterException,
+            NoSuchPaddingException,
+            InvalidKeyException,
+            CMSException {
         int maxKeySize = javax.crypto.Cipher.getMaxAllowedKeyLength("AES");
         System.out.println(maxKeySize);
+        Security.addProvider(new BouncyCastleProvider());
+        //Symmetric cryptography
+        //Crypto.crypt();
 
-        // ADDING BOUNCY CASTLES AS PROVIDER --- MAKE DYNAMIC
-        Security.addProvider(new BouncyCastleProvider()); // adds BouncyCastle as provider to security as "BC"
-
-        //CertificateFactory certificateFactory = CertificateFactory.
-        //      getInstance("X.509", "BC");
-        // END
-
-        // Not used?:
-        //X509Certificate certificate = (X509Certificate) certificateFactory.
-        //       generateCertificate(new FileInputStream("data/Baeldung.cer"));
-
-        char[] keystorePassword = "password".toCharArray();
-        char[] keyPassword = "password".toCharArray();
-
-        KeyStore keyStore = KeyStore.getInstance("PKCS12");
-        keyStore.load(new FileInputStream("data/Baeldung.p12"), keystorePassword);
-
-        PrivateKey key = (PrivateKey) keyStore.getKey("baeldung", keyPassword);
-
-        System.out.println(key);
-
-        //BMAIL
+        /*// BMAIL
         User.getInstance().getContact().setEmail("user@email.com");
         User.getInstance().getContact().setHost("smtp.gmail.com");//smtp.gmail.com,com.sun.mail
         User.getInstance().addEmail(new BMessage("this is the text thing",User.getInstance().getContact(),new Contact("Bob","Bob@bobberson.com","the key?"),"this is the subject"));
+        // END */
 
+        //PublicKey  pk = (PublicKey) KeyPairHandler.getInstance().getPublicKey("data/Baeldung.cer");
+        X509Certificate cert = KeyPairHandler.getInstance().getPublicKey("data/Baeldung.cer");
+        PublicKey publicKey = cert.getPublicKey();
+
+        byte[] encryptedBytes = Baeldung.getInstance().encrypt("hello world", cert);
+
+        System.out.println(encryptedBytes);
+        String s = new String(encryptedBytes);
+        System.out.println(s);
+
+        //RSAEncryptionHandler.getInstance().encrypt("hello world", publicKey);
 
         // LAUNCH APPLICATION
         launch();
